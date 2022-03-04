@@ -1,0 +1,137 @@
+\documentclass[12pt,french]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%  PACKAGES  %%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{geometry}
+\geometry{ a4paper, lmargin=3cm, tmargin=2.5cm, bmargin=2.5cm, rmargin=2cm }
+
+%Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%French-specific commands
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint}
+
+%Hyphenation rules
+\usepackage{hyphenat}
+%\hyphenation{mathéma-tiques récu-pérer}
+
+% \usepackage[toc]{glossaries}
+\usepackage[toc]{glossaries}
+
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+\usepackage{endnotes}
+
+%%Item line spacing 
+\usepackage{enumitem}
+% \setlist{topsep=0.2em, itemsep=0.2em}
+
+%%Images
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{{./images/}}
+
+
+
+
+% \usepackage[nottoc]{tocbibind}
+
+%Colors
+\usepackage[usenames, dvipsnames]{color} %For color
+
+%DEFINE COLOR FOR CODE
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+\definecolor{codegray}{rgb}{0.9,0.9,0.9}
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{lightgray}{rgb}{1,1,1}
+\definecolor{beys}{rgb}{0,0.23,0.105}
+\definecolor{beyslight}{rgb}{0.98,1,0.98}
+\definecolor{beys2}{rgb}{0,0.4,0.98}
+
+% pdf inclusion
+\usepackage{pdfpages}
+
+%Code package
+\usepackage{listings}   %for code
+\lstdefinestyle{CODE}{
+    % frame=L,      %cadre autour du code
+    backgroundcolor=\color{white},
+    numberstyle=\tiny\color{beys},
+    rulecolor=\color{beys},
+    commentstyle=\color{greencomments},   %met les commentaire en couleur(vert)
+    stringstyle=\color{redstrings},
+    keywordstyle=\color{beys}\bfseries,
+    language=Python,
+    numbers=left,     %affiche les numero de lignes
+    basicstyle=\scriptsize,   %taille de la police d'écriture
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=Ltbr,	                   	   % adds a frame around the code
+    keepspaces=true,
+    showspaces=false,
+    showtabs=false,
+    escapeinside={\%*}{*)},
+    breaklines=true,
+    tabsize=4,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)}
+}
+
+
+
+\lstset{literate=
+{á}{{á}}1 {é}{{é}}1 {í}{{í}}1 {ó}{{ó}}1 {ú}{{ú}}1
+{Á}{{Á}}1 {É}{{É}}1 {Í}{{Í}}1 {Ó}{{Ó}}1 {Ú}{{Ú}}1
+{à}{{à}}1 {è}{{è}}1 {ì}{{ì}}1 {ò}{{ò}}1 {ù}{{ù}}1
+{À}{{À}}1 {È}{{É}}1 {Ì}{{Ì}}1 {Ò}{{Ò}}1 {Ù}{{Ù}}1
+{ä}{{ä}}1 {ë}{{ë}}1 {ï}{{ï}}1 {ö}{{ö}}1 {ü}{{ü}}1
+{Ä}{{Ä}}1 {Ë}{{Ë}}1 {Ï}{{Ï}}1 {Ö}{{Ö}}1 {Ü}{{Ü}}1
+{â}{{â}}1 {ê}{{ê}}1 {î}{{î}}1 {ô}{{ô}}1 {û}{{û}}1
+{Â}{{Â}}1 {Ê}{{Ê}}1 {Î}{{Î}}1 {Ô}{{Ô}}1 {Û}{{Û}}1
+{Ã}{{Ã}}1 {ã}{{ã}}1 {Õ}{{Õ}}1 {õ}{{õ}}1
+{œ}{{œ}}1 {Œ}{{Œ}}1 {æ}{{æ}}1 {Æ}{{Æ}}1 {ß}{{ß}}1
+{ű}{{ű}}1 {Ű}{{Ű}}1 {ő}{{ő}}1 {Ő}{{Ő}}1
+{ç}{{ç}}1 {Ç}{{Ç}}1 {ø}{{ø}}1 {å}{{å}}1 {Å}{{Å}}1
+{€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+{»}{{\guillemotright}}1 {ñ}{{ñ}}1 {Ñ}{{Ñ}}1 {¿}{{?`}}1
+}
+
+\usepackage{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%% GLOSSAIRE  %%%%%%%%%%%%%%%%%%%%%% 
+% \makeglossaries
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\author{Babidiii}
+\title{My title}
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%  DOCUMENT  %%%%%%%%%%%%%%%%%%%%%% 
+\begin{document}
+
+\input{src/titlepage}
+\setcounter{page}{2}
+
+% \input{src/thanks}
+\tableofcontents \clearpage
+\listoffigures \clearpage
+\lstlistoflistings 
+\listoftables \clearpage
+
+\section{My first section}
+
+% \input{src/biblio}
+\clearpage
+% \input{src/annexes}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%  DOCUMENT  %%%%%%%%%%%%%%%%%%%%%% 
