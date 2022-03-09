@@ -28,7 +28,7 @@ main(){
   fi
 
 	printf "${YEL}* Compiling \n${DEF}"
-  podman run --rm --volume "`pwd`:/data" --entrypoint "/data/latex_compile.sh" "${image_name}" 
+  podman run --rm -ti --volume "`pwd`:/data" --entrypoint "/data/latex_compile.sh" "${image_name}" 
 }
 
 main "${@}"
