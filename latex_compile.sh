@@ -4,7 +4,5 @@
 #| github.com/babidiii               |
 # -----------------------------------
 
-
-#pdflatex rapport.tex 
-
+# customize you latex build command here if needed
 ls ./src/*.tex | entr xelatex -shell-escape -output-directory=./build ./src/rapport.tex 
