@@ -1,32 +1,32 @@
-# latex_base
-Template for latex report
+<p align="center">
+  <img align="center" alt="logo" src=".assets/templex.gif" />
+</p>
+
+# Templex
+
+Templex is a template for latex report without installing anything on your machine. It works with containerization.  
+The project is based on [TinyTex](https://yihui.org/tinytex/) a lightweight and easy to maintain LaTeX distribution.
 
 ## Dependancies
 
-- podman/buildah
+You will need either 
+- **docker**
+- **podman** and **buildah**
 
-If you want to use docker you will just need to change the following line in the `compile.sh` file.
+## Installation & usage
 
-```diff
---- a/compile.sh
-+++ b/compile.sh
-@@ -23,12 +23,12 @@ main(){
-     printf "${RED}* Image doesn't exist\n${DEF}"
-     printf "${YEL}* Building the %s image\n${DEF}" "${image_name}"
+Run the `compile.sh` script which will use either podman or docker.  
+If the image doesn't exist yet it will build it before running it within a container.
 
--    buildah build -t "${image_name}" -f "${dockerfile_path}" "${context_path}"
-+    docker build -t "${image_name}" -f "${dockerfile_path}" "${context_path}"
-     [[ $? -ne 0 ]] && printf "${RED}* Error building the image${DEF}\n" && exit 1
-   fi
-
-        printf "${YEL}* Compiling \n${DEF}"
--  podman run --rm --volume "`pwd`:/data" --entrypoint "/data/latex_compile.sh" "${image_name}"
-+  docker run --rm --volume "`pwd`:/data" --entrypoint "/data/latex_compile.sh" "${image_name}"
-}
+```sh
+./compile
 ```
 
-## Run 
+The latex compilation chain is made in order to provide autoreload with `entr` command.
+If you want to customize your compilation you can change the `latex_compilation.sh` script
 
 ```sh
 ./compile 
 ```
+
+If you need a package that is not installed you will have to add it within the Dockerfile and rebuild your image
