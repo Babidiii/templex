@@ -13,6 +13,35 @@ You will need either
 - **docker**
 - **podman** and **buildah**
 
+The output result will be a container defined as the following schema.
+
+```sh
+podman run --rm -ti --volume "`pwd`:/data" --entrypoint "/data/latex_compile.sh" "templex"
+
+               Templex container
+              ┌─────────────────────┐
+              │      - TinyTex      │
+              │      - entr      ┌──────────┐
+              │      - ...       │ENTRYPOINT│─┐
+              │                  └──────────┘ │
+              │  ┌───────────────┐  │         │
+              │  │ VOLUME (/data)│  │         │
+              │  └───────┬───────┘  │         │
+              └──────────┼──────────┘         │
+                         │                    │
+             ┌───────────┴────────────┐       │
+             │  ./                    │       │
+             │  ├── build/            │       │
+             │  ├── images/           │       │
+             │  ├── src/              │       │
+             │  ├── Dockerfile        │       │
+             │  ├── compile.sh*       │       │
+             │  ├── latex_compile.sh* ◄───────┘
+             │  ├── LICENSE           │
+             │  └── README.md         │
+             └────────────────────────┘
+```
+
 ## Installation & usage
 
 Run the `compile.sh` script which will use either podman or docker.  
@@ -27,7 +56,10 @@ If you want to customize your compilation you can change the `latex_compilation.
 
 Here is what `latex_compilation` does
 ```sh
-ls ./src/*.tex | entr xelatex -shell-escape -output-directory=./build ./src/rapport.tex 
+find -name *.tex | entr xelatex -shell-escape -output-directory=./build ./src/rapport.tex 
+# on each files given bu the find command if any change happend then entr will trigger the xeltex command
+# The xelatex command will take your source code from /src directory 
+# And the output will be found in the build directory
 ```
 
 If you need a package that is not installed you will have to add it within the Dockerfile and rebuild your image.
@@ -40,4 +72,4 @@ RUN tlmgr install packages ... yourpackage
 ## Things to do
 
 - I will soon add the image to a registry.
-- Add some utils script for latex
+- Add some utils scripts for latex
