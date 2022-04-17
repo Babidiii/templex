@@ -12,6 +12,6 @@ ENV PATH="${PATH}:/root/bin"
 RUN tlmgr install xetex
 RUN fmtutil-sys --all
 
-RUN tlmgr install pgf fancyhdr parskip babel-english units lastpage comment fontawesome babel-french numprint hyphenat glossaries caption endnotes enumitem wrapfig pdfpages listings carlisle mfirstuc textcase xfor datatool tracklang appendix pdflscape
+RUN tlmgr install pgf fancyhdr parskip babel-english units lastpage comment fontawesome babel-french numprint hyphenat glossaries caption endnotes enumitem wrapfig pdfpages listings carlisle mfirstuc textcase xfor datatool tracklang appendix pdflscape glossaries-french babel-french
 
 WORKDIR /data/

@@ -14,19 +14,16 @@
 
 %Hyphenation rules
 \usepackage{hyphenat}
-%\hyphenation{mathéma-tiques récu-pérer}
 
-% \usepackage[toc]{glossaries}
-\usepackage[toc]{glossaries}
-
-\usepackage{subcaption}
+\usepackage[acronym, toc]{glossaries}
 \usepackage{hyperref}
 
+\usepackage{subcaption}
 \usepackage{endnotes}
 
 %%Item line spacing 
 \usepackage{enumitem}
-% \setlist{topsep=0.2em, itemsep=0.2em}
+
 
 %%Images
 \usepackage{graphicx}
@@ -48,28 +45,25 @@
 \definecolor{codegray}{rgb}{0.9,0.9,0.9}
 \definecolor{black}{rgb}{0,0,0}
 \definecolor{lightgray}{rgb}{1,1,1}
-\definecolor{beys}{rgb}{0,0.23,0.105}
-\definecolor{beyslight}{rgb}{0.98,1,0.98}
-\definecolor{beys2}{rgb}{0,0.4,0.98}
 
 % pdf inclusion
 \usepackage{pdfpages}
 
-%Code package
-\usepackage{listings}   %for code
+% Code package
+\usepackage{listings}
 \lstdefinestyle{CODE}{
-    % frame=L,      %cadre autour du code
+    % frame=L,                          %cadre autour du code
     backgroundcolor=\color{white},
     numberstyle=\tiny\color{beys},
     rulecolor=\color{beys},
-    commentstyle=\color{greencomments},   %met les commentaire en couleur(vert)
+    commentstyle=\color{greencomments}, % met les commentaire en couleur(vert)
     stringstyle=\color{redstrings},
     keywordstyle=\color{beys}\bfseries,
     language=Python,
-    numbers=left,     %affiche les numero de lignes
-    basicstyle=\scriptsize,   %taille de la police d'écriture
-    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-    frame=Ltbr,	                   	   % adds a frame around the code
+    numbers=left,                       % affiche les numero de lignes
+    basicstyle=\scriptsize,             % taille de la police d'écriture
+    extendedchars=true,                 % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=Ltbr,                         % adds a frame around the code
     keepspaces=true,
     showspaces=false,
     showtabs=false,
@@ -82,8 +76,6 @@
     breakatwhitespace=true,
     escapeinside={(*@}{@*)}
 }
-
-
 
 \lstset{literate=
 {á}{{á}}1 {é}{{é}}1 {í}{{í}}1 {ó}{{ó}}1 {ú}{{ú}}1
@@ -105,12 +97,10 @@
 \usepackage{appendix}
 
 %%%%%%%%%%%%%%%%%%%%%% GLOSSAIRE  %%%%%%%%%%%%%%%%%%%%%% 
-% \makeglossaries
-
+\makenoidxglossaries
+\loadglsentries{src/glossaries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
 \author{Babidiii}
 \title{My title}
 \raggedbottom
@@ -121,7 +111,6 @@
 \input{src/titlepage}
 \setcounter{page}{2}
 
-% \input{src/thanks}
 \tableofcontents \clearpage
 \listoffigures \clearpage
 \lstlistoflistings 
@@ -129,9 +118,13 @@
 
 \section{My first section}
 
-% \input{src/biblio}
+The \Gls{latex} typesetting markup language is specially suitable \\
+for documents that include \gls{maths}. 
+
+An event like a \gls{ctf} is nice.
+
 \clearpage
-% \input{src/annexes}
+\printnoidxglossaries
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%  DOCUMENT  %%%%%%%%%%%%%%%%%%%%%% 
