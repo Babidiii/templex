@@ -1,0 +1,5 @@
+name: 'pdf builder'
+description: 'Build a pdf from pandex project'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

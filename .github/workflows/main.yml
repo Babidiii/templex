@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  latex_to_pdf_job:
+    runs-on: ubuntu-latest
+    name: Latex to pdf job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: PDF Generation
+        uses: ./
+        id: hello
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdf
+          path: "./build/*.pdf"
+          if-no-files-found: error
+          retention-days: 14
